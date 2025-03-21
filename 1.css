@@ -1,0 +1,100 @@
+/* Existing button styles */
+.button {
+    background: #1a1a1a;
+    color: #ffffff;
+    padding: 15px 32px;
+    font-size: 1em;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    /* Remove the old buttonPulse animation */
+}
+
+/* New button animations */
+
+/* Subtle Pulse Animation */
+.button.pulse {
+    animation: buttonPulse 1.5s infinite alternate ease-in-out;
+}
+
+@keyframes buttonPulse {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.05);
+    }
+}
+
+/* Slide-Up on Hover Animation */
+.button.slide-up:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Border Glow on Hover Animation */
+.button.border-glow {
+    position: relative;
+    overflow: hidden;
+}
+
+.button.border-glow::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, #ff0000, transparent);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.button.border-glow:hover::before {
+    opacity: 1;
+    animation: borderGlowAnim 1.2s linear infinite;
+}
+
+@keyframes borderGlowAnim {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Background Sweep on Hover Animation */
+.button.bg-sweep {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.button.bg-sweep::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255, 0, 0, 0.3), transparent);
+    transition: left 0.4s ease-in-out;
+    z-index: -1;
+}
+
+.button.bg-sweep:hover::before {
+    left: 0;
+}
+
+/* You can combine these or use them individually by adding the specific class to your HTML buttons */
+.button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.5);
+    background: linear-gradient(135deg, #ff0000, #ff7300);
+    transition: transform 0.5s ease, box-shadow 0.5s ease, background 0.5s ease;
+}
